@@ -1,4 +1,4 @@
 TEST
 ====
 
-**funguje to (mozna)**
+**funguje to (mozna) (urcite)**
