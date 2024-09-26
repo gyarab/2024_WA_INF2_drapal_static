@@ -1,0 +1,6 @@
+.item {
+    background-color: black;
+    color:white;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid red;
+}
