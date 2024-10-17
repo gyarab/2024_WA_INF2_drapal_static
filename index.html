@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS test</title>
+    </head>
+    <body>
+        <div id="test"></div>
+        <script>
+            console.log("Hello world");
+            let el = document.getElementById("test");
+            el.innerHTML="<strong>Hello world</strong>";
+
+            let a = 2;
+            let b = "2";
+            console.log(typeof(a));
+            console.log(typeof(b));
+
+            console.log(a+a);
+            console.log(a+b);
+
+            let arr=["jeden","dva","tri"]
+            console.log(arr);
+
+            for (let i=0; i<arr.length; i++) {
+                console.log(i + ": " + arr[i]);
+                let div=document.createElement("div")
+                div.innerHTML="<span style=\"color:rgb(" + 127*i + ",127,127)\">" + arr[i] + "</span>";
+                console.log(70*i)
+                el.appendChild(div);
+            }
+
+            let div=document.createElement("div");
+            div.innerHTML="test";
+            el.appendChild(div);
+        </script>
+    </body>
+</html>
