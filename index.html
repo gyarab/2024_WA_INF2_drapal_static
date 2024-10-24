@@ -2,13 +2,55 @@
 <html>
     <head>
         <title>JS test</title>
+        <style>
+            .item {
+                background-color: aliceblue;
+                border: 1px solid blue;
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
     </head>
     <body>
+        <input type="button" id="tlacitko" value="TEST"/>
+        <input type="text" id="vstup" value=""/>
         <div id="test"></div>
+        <div id="testColor"></div>
         <script>
+            function remove(element) {
+                element.parentNode.removeChild(element);
+            }
+
+            function novy(event) {
+                let el = document.getElementById("test");
+
+                let textInput = document.getElementById("vstup");
+
+                let div = document.createElement("div");
+                div.classList.add("item");
+                div.style.fontSize="20px";
+                
+                div.innerHTML=textInput.value;
+
+                let divClose=document.createElement("div");
+                divClose.innerHTML = "☺☻☺☻☺";
+                div.addEventListener("click", (event) => {
+                    remove(div);
+                })
+                div.appendChild(divClose);
+
+                el.appendChild(div);
+            }
+
+            let tlacitko=document.getElementById("tlacitko");
+            tlacitko.addEventListener("click", (event) => {
+                novy();
+            })
+
             console.log("Hello world");
-            let el = document.getElementById("test");
-            el.innerHTML="<strong>Hello world</strong>";
+            
+            // Color test
+            let el2 = document.getElementById("testColor")
 
             let a = 2;
             let b = "2";
@@ -23,15 +65,11 @@
 
             for (let i=0; i<arr.length; i++) {
                 console.log(i + ": " + arr[i]);
-                let div=document.createElement("div")
-                div.innerHTML="<span style=\"color:rgb(" + 127*i + ",127,127)\">" + arr[i] + "</span>";
+                let divColor=document.createElement("div")
+                divColor.innerHTML="<span style=\"color:rgb(" + 127*i + ",127,127)\">" + arr[i] + "</span>";
                 console.log(70*i)
-                el.appendChild(div);
+                el2.appendChild(divColor);
             }
-
-            let div=document.createElement("div");
-            div.innerHTML="test";
-            el.appendChild(div);
         </script>
     </body>
 </html>
