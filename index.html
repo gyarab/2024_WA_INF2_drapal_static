@@ -9,11 +9,32 @@
                 padding: 10px;
                 margin: 10px;
             }
+            .ovoce {
+                background-color: #f8312f;
+            }
+            .zvirata {
+                background-color: #a56953;
+            }
+            .emoji {
+                background-color: #ffb02e;
+            }
+            button {
+                display: inline-block;
+            }
+            button:hover {
+                background-color: black;
+            }
+            
         </style>
     </head>
     <body>
-        <input type="button" id="tlacitko" value="TEST"/>
+        <input type="button" id="tlacitko" value="Novy"/>
         <input type="text" id="vstup" value=""/>
+        <select id="imageSelector">
+            <option value="ovoce" selected="1">Ovoce</option>
+            <option value="zvirata">Zvirata</option>
+            <option value="emoji">Emoji</option>
+        </select>
         <div id="test"></div>
         <div id="testColor"></div>
         <script>
@@ -27,19 +48,43 @@
                 let textInput = document.getElementById("vstup");
 
                 let div = document.createElement("div");
+                el.appendChild(div);
+                switch (document.getElementById("imageSelector").value) {
+                    case "ovoce":
+                        div.innerHTML = "🍉";
+                        div.classList.add("ovoce");
+                        break;
+                    case "zvirata":
+                        div.innerHTML = "🐻";
+                        div.classList.add("zvirata");
+                        break;
+                    case "emoji":
+                        div.innerHTML = "😊😂😎🥲🤨";
+                        div.classList.add("emoji");
+                        break;
+                }
                 div.classList.add("item");
                 div.style.fontSize="20px";
                 
-                div.innerHTML=textInput.value;
+                div.innerHTML+=textInput.value;
 
-                let divClose=document.createElement("div");
-                divClose.innerHTML = "☺☻☺☻☺";
+                let buttonClose=document.createElement("button");
+                buttonClose.innerHTML = "☺☻☺☻☺";
                 div.addEventListener("click", (event) => {
-                    remove(div);
+                    div.style.opacity=0.5;
+                    buttonClose.disabled=true;
+                    setTimeout(() => {
+                        remove(div)
+                    }, 1000);
                 })
-                div.appendChild(divClose);
+                div.appendChild(buttonClose);
 
-                el.appendChild(div);
+                div.dataset.hodnota=5;
+                div.dataset.test="test";
+
+                setTimeout(() => {
+                    console.log("TEST");
+                }, 5000)
             }
 
             let tlacitko=document.getElementById("tlacitko");
@@ -70,6 +115,10 @@
                 console.log(70*i)
                 el2.appendChild(divColor);
             }
+
+            setInterval(() => {
+                novy()
+            }, 5000)
         </script>
     </body>
 </html>
